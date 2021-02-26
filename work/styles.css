@@ -1,0 +1,20 @@
+@page {   
+  size: A4 portrait;
+  @top-center {
+    content: element(header);  
+  }
+  @bottom-center {
+	  content: counter(page);	
+	}
+}
+
+#header { position: running(header); }
+
+h1, h3 {
+  color:green;
+}
+
+hr {
+    background-color: green;
+}
+

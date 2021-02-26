@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Good Thymes Virtual Grocery</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body style="font-family: noto;">
+  <div id="header" class="header" style="text-align: center; line-height: 0.5;">
+    <p style="font-weight:bold; color: darkslategrey;" th:text="${praxis.departmentId} + ' - ' + ${praxis.name}">praxis</p>
+    <p style="color: darkslategrey;" th:text="${praxis.profession.code} + ' - ' + ${praxis.profession.name}">praxis2</p>
+    <br />
+  </div>
+  <div class="content">
+    <br />
+    <h1>Ellátási lap ÁáÉéŰűŐőÚúÓóÜü?:_$@$%</h1>
+    <br />
+    <table>
+      <tr>
+        <td>Beteg neve:</td>
+        <td th:text="${patient.name}">Név</td>
+      </tr>
+      <tr>
+        <td>Felvétel dátuma:</td>
+        <td th:text="${additionalData.admissionDate}">Felv</td>
+      </tr>
+    </table>
+    <hr style="height:5px;border-width:0;" />
+    <br />
+    <h3>Orvoshoz fordulás oka:</h3>
+    <div th:utext="${additionalData.caseTextDocumentations[0].text}">Orv for oka</div>
+    <br />
+    <h3>Diagnozis:</h3>
+    <table>
+      <tr>
+        <th>Kód</th>
+        <th>Megnevezés</th>
+        <th>Fődiagnózis</th>
+      </tr>
+      <tr th:each="diag : ${additionalData.medicalCaseDiagnoses}">
+        <td th:text="${diag.diagnosis.code}">kod</td>
+        <td th:text="${diag.diagnosis.descr}">nev</td>
+        <td th:text="${diag.mainDiagnosis}? igen :  nem">igen</td>
+      </tr>
+    </table>
+    <br />
+    <h3>Igazítás:</h3>
+    <div style="position: relative; width: auto; height: 5cm; border: 1px solid;">
+      <p>XY pozicionálás:</p>
+      <div style="position: absolute; top: 1.5cm; left: 3cm; height: 2cm; width: 5cm; background-color: aqua;"></div>
+      <div style="position: absolute; top: 2.5cm; left: 4cm; height: 2cm; width: 5cm; background-color:burlywood;">
+        Pozicionált szöveg</div>
+    </div>
+  </div>
+</body>
+
+</html>
